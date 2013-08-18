@@ -1,0 +1,28 @@
+filetype plugin on
+syntax on
+:nmap <C-n> :set invnumber <CR>
+:set laststatus=2
+:set autoread
+:set ignorecase
+:set autoindent
+":set bomb
+":set fileencoding=utf-8
+":set ffs=dos
+":bufdo! set ff=dos|w
+:set hlsearch
+"Display whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$\|^ \+[^\*]\| \+\t\|\t \+[^\*]\|  \+/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$\|^ \+[^\*]\| \+\t\|\t \+[^\*]\|  \+/
+autocmd InsertEnter * match ExtraWhitespace /\s\+$\|^ \+[^\*]\| \+\t\|\t \+[^\*]\|  \+/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$\|^ \+[^\*]\| \+\t\|\t \+[^\*]\|  \+/
+"Over 80 characters
+"highlight OverLength ctermbg=red guibg=red
+"match OverLength /\%81v.\+/
+"autocmd BufWinEnter * match OverLength /\%81v.\+/
+"autocmd InsertEnter * match OverLength /\%81v.\+/
+"autocmd InsertLeave * match OverLength /\%81v.\+/
+autocmd BufWinLeave * call clearmatches()
+"Display tab character
+:set listchars=tab:»·,trail:·
+:nmap <C-l> :set list! <CR>
